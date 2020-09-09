@@ -5,6 +5,8 @@ import AuthorizationPage from './containers/AuthorizationPage';
 import Header from './containers/Header';
 import { PrivateRoute } from './containers/routers/PrivateRouter';
 import JogsPage from './containers/JogsPage';
+import InfoPage from './containers/InfoPage';
+import ContactPage from './containers/ContactPage';
 
 function App() {
     return (
@@ -19,10 +21,10 @@ function App() {
                         <JogsPage />
                     </PrivateRoute>
                     <PrivateRoute exact path="/info">
-                        <JogsPage />
+                        <InfoPage />
                     </PrivateRoute>
                     <PrivateRoute exact path="/contact">
-                        <JogsPage />
+                        <ContactPage />
                     </PrivateRoute>
                 </Switch>
             </div>
