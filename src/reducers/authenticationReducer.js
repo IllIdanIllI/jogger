@@ -1,4 +1,4 @@
-import { AUTHENTICATION, LOG_OUT } from '../constants/types';
+import { AUTHENTICATION, LOG_OUT, RE_AUTHENTICATION } from '../constants/types';
 import { TOKEN } from '../constants/constants';
 
 const initialState = {
@@ -12,6 +12,12 @@ export default (state = initialState, action) => {
     switch (type) {
         case AUTHENTICATION:
             localStorage.setItem(TOKEN, payload);
+            return {
+                ...state,
+                token: payload,
+                isAuthenticated: true,
+            };
+        case RE_AUTHENTICATION:
             return {
                 ...state,
                 token: payload,

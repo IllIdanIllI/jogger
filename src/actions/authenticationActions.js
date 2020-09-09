@@ -1,6 +1,6 @@
 import axiosInstance from './axios';
-import { AUTH_URL } from '../constants/constants';
-import { AUTHENTICATION, LOG_OUT } from '../constants/types';
+import { AUTH_URL, TOKEN } from '../constants/constants';
+import { AUTHENTICATION, LOG_OUT, RE_AUTHENTICATION } from '../constants/types';
 
 export const authenticate = () => (dispatch) => {
     const body = JSON.stringify({ uuid: 'hello' });
@@ -10,6 +10,13 @@ export const authenticate = () => (dispatch) => {
             payload: response.data.response.access_token,
         })
     );
+};
+
+export const reAuthenticate = (token) => (dispatch) => {
+    dispatch({
+        type: RE_AUTHENTICATION,
+        payload: token,
+    });
 };
 
 export const logOut = () => (dispatch) => {
