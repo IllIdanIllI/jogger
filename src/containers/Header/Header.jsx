@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import logo from '../../images/logo/logo.png';
 import { ReactComponent as Filter } from '../../images/filter/filter.svg';
 import './Header.scss';
@@ -8,17 +8,22 @@ import './Header.scss';
 const headerItems = [
     { name: 'Jogs', path: '/jogs' },
     { name: 'Info', path: '/info' },
-    { name: 'Contact Us', path: '/contact-us' },
+    { name: 'Contact Us', path: '/contact' },
 ];
 
-const Header = ({ isAuthenticate }) => {
+const Header = () => {
     const [isFilterActive, setFilterActive] = useState(false);
+
+    const isAuthenticated = useSelector(
+        (state) => state.authentication.isAuthenticated
+    );
+
     return (
         <header>
             <Link to="/">
                 <img src={logo} className="header__logo" />
             </Link>
-            {!isAuthenticate && (
+            {isAuthenticated && (
                 <nav>
                     <ul className="header__items">
                         {headerItems.map((item) => (
@@ -43,7 +48,5 @@ const Header = ({ isAuthenticate }) => {
         </header>
     );
 };
-Header.propTypes = {
-    isAuthenticate: PropTypes.bool.isRequired,
-};
+
 export default Header;

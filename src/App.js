@@ -1,21 +1,35 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import './App.scss';
-import AuthorizationPage from './components/AuthorizationPage';
+import AuthorizationPage from './containers/AuthorizationPage';
 import Header from './containers/Header';
+import { PrivateRoute } from './containers/routers/PrivateRouter';
+import JogsPage from './containers/JogsPage';
+import { useActions } from './custom/customHooks';
+import { logOut } from './actions/authenticationActions';
 
 function App() {
     return (
-        <>
-            <Router>
-                <Header isAuthenticate={false} />
+        <Router>
+            <Header />
+            <div className="content-container">
                 <Switch>
-                    <Route exact path='/'>
+                    <Route exact path={['/', '/login']}>
                         <AuthorizationPage />
                     </Route>
+                    <PrivateRoute exact path="/jogs">
+                        <JogsPage />
+                    </PrivateRoute>
+                    <PrivateRoute exact path="/info">
+                        <JogsPage />
+                    </PrivateRoute>
+                    <PrivateRoute exact path="/contact">
+                        <JogsPage />
+                    </PrivateRoute>
                 </Switch>
-            </Router>
-        </>
+            </div>
+        </Router>
     );
 }
 

@@ -1,0 +1,36 @@
+$baby-purple: #e990f9;
+$white-two: #ffffff;
+div {
+    position: relative;
+    .login-form-wrapper {
+        position: fixed;
+        display: grid;
+        width: 503px;
+        height: 379px;
+        border-radius: 44px;
+        background-color: $baby-purple;
+        justify-items: center;
+        align-items: center;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        &__img {
+            width: 160px;
+            height: 150px;
+            object-fit: contain;
+        }
+
+        &__btn {
+            width: 151px;
+            height: 60px;
+            border-radius: 36px;
+            border: solid 3px $white-two;
+            background-color: inherit;
+            color: $white-two;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+}
