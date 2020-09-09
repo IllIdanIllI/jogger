@@ -6,11 +6,9 @@ $white-two: #ffffff;
     height: 379px;
     border-radius: 44px;
     background-color: $baby-purple;
-    align-self: center;
-    justify-items: center; 
+    justify-items: center;
     align-items: center;
-    margin-left: auto;
-    margin-right: auto;
+    transform: translate(100%, 50%);
 }
 .login-form-wrapper__img {
     width: 160px;
@@ -27,4 +25,5 @@ $white-two: #ffffff;
     color: $white-two;
     font-size: 18px;
     font-weight: bold;
+    cursor: pointer;
 }

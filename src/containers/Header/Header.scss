@@ -1,0 +1,59 @@
+$apple-green: #7ed321;
+header {
+    display: grid;
+    width: 100%;
+    height: 116px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: $apple-green;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    .header {
+        &__logo {
+            margin-left: 37px;
+            float: left;
+            width: 147px;
+            height: 56px;
+        }
+
+        &__items {
+            float: right;
+            display: grid;
+            list-style-type: none;
+            grid-template-columns: repeat(4, 1fr);
+
+            &-instance {
+                float: left;
+                text-align: center;
+                &-filter {
+                    cursor: pointer;
+                    &_inactive {
+                        cursor: pointer;
+                        g {
+                            path {
+                                fill: #ffffff;
+                            }
+                            rect {
+                                stroke-width: 0;
+                            }
+                        }
+                    }
+                }
+
+                a {
+                    cursor: pointer;
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    font-weight: bold;
+                    display: block;
+                    color: white;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
