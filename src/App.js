@@ -7,6 +7,7 @@ import { PrivateRoute } from './containers/routers/PrivateRouter';
 import JogsPage from './containers/JogsPage';
 import InfoPage from './containers/InfoPage';
 import ContactPage from './containers/ContactPage';
+import { JOGS_URL, INFO_URL, LOGIN_URL } from './constants/constants';
 
 function App() {
     return (
@@ -14,16 +15,16 @@ function App() {
             <Header />
             <div className="content-container">
                 <Switch>
-                    <Route exact path={['/', '/login']}>
+                    <Route exact path={['/', `${LOGIN_URL}`]}>
                         <AuthorizationPage />
                     </Route>
-                    <PrivateRoute exact path="/jogs">
+                    <PrivateRoute exact path={JOGS_URL}>
                         <JogsPage />
                     </PrivateRoute>
-                    <PrivateRoute exact path="/info">
+                    <PrivateRoute exact path={INFO_URL}>
                         <InfoPage />
                     </PrivateRoute>
-                    <PrivateRoute exact path="/contact">
+                    <PrivateRoute exact path={CONTACT_URL}>
                         <ContactPage />
                     </PrivateRoute>
                 </Switch>

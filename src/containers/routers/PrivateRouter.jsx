@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useActions } from '../../custom/customHooks';
 import { logOut } from '../../actions/authenticationActions';
-import { TOKEN } from '../../constants/constants';
+import { TOKEN, LOGIN_URL } from '../../constants/constants';
 
 export const PrivateRoute = ({ children, ...rest }) => {
     const isAuthenticate = useSelector(
@@ -28,7 +28,7 @@ export const PrivateRoute = ({ children, ...rest }) => {
                 ) : (
                     <Redirect
                         to={{
-                            pathname: '/login',
+                            pathname: LOGIN_URL,
                             state: { from: location },
                         }}
                     />

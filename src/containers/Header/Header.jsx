@@ -4,11 +4,12 @@ import { useSelector } from 'react-redux';
 import logo from '../../images/logo/logo.png';
 import { ReactComponent as Filter } from '../../images/filter/filter.svg';
 import './Header.scss';
+import { JOGS_URL, INFO_URL, CONTACT_URL } from '../../constants/constants';
 
 const headerItems = [
-    { name: 'Jogs', path: '/jogs' },
-    { name: 'Info', path: '/info' },
-    { name: 'Contact Us', path: '/contact' },
+    { name: 'Jogs', path: JOGS_URL },
+    { name: 'Info', path: INFO_URL },
+    { name: 'Contact Us', path: CONTACT_URL },
 ];
 
 const Header = () => {
@@ -17,6 +18,8 @@ const Header = () => {
     const isAuthenticated = useSelector(
         (state) => state.authentication.isAuthenticated
     );
+
+    const currentUrl = window.location.pathname;
 
     return (
         <header>
