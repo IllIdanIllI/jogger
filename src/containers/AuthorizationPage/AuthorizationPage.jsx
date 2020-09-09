@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './AuthorizationPage.scss';
 import bearFace from '../../images/bear-face/bear-face.png';
 import { useActions } from '../../custom/customHooks';
 import { authenticate } from '../../actions/authenticationActions';
+import { TOKEN } from '../../constants/constants';
 
 const AuthorizationPage = ({ isAuthenticate }) => {
     const [onAuthenticate] = useActions([authenticate]);
@@ -12,6 +13,14 @@ const AuthorizationPage = ({ isAuthenticate }) => {
     const isAuthenticated = useSelector(
         (state) => state.authentication.isAuthenticated
     );
+
+    useEffect(() => {
+        const token = localStorage.getItem(TOKEN);
+
+        if (token && !isAuthenticate) {
+            onAuthenticate();
+        }
+    }, [isAuthenticated]);
 
     if (isAuthenticated) return <Redirect to="/jogs" />;
 
