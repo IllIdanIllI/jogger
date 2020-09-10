@@ -1,10 +1,11 @@
 @import '../../style/colors';
 
 .info-container {
+    position: relative;
     width: 46vw;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 201px;
+    top: 85px;
     &__header {
         color: $apple-green;
         text-transform: uppercase;

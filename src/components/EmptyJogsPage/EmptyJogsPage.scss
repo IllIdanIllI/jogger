@@ -1,0 +1,37 @@
+@import '../../style/colors';
+
+$buttonHeight: 60px;
+
+.empty-jogs-container {
+    position: relative;
+    top: 20vh;
+    display: grid;
+    grid-template-rows: 1fr $buttonHeight;
+    grid-row-gap: 70px;
+    justify-items: center;
+    &__notification {
+        display: grid;
+        grid-template-rows: 150px 24px;
+        grid-row-gap: 47px;
+        justify-items: center;
+        &-text {
+            color: $text-grey;
+            font-size: 24px;
+            line-height: 1.21;
+            text-align: center;
+        }
+    }
+    &__creation {
+        cursor: pointer;
+        background-color: transparent;
+        width: 249px;
+        height: $buttonHeight;
+        border-radius: 36px;
+        border: solid 3px $baby-purple;
+        span {
+            font-size: 18px;
+            font-weight: bold;
+            color: $baby-purple;
+        }
+    }
+}
