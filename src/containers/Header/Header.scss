@@ -1,4 +1,15 @@
 $apple-green: #7ed321;
+
+@mixin a-teg-decoration {
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
 header {
     display: grid;
     width: 100%;
@@ -27,6 +38,10 @@ header {
             &-instance {
                 float: left;
                 text-align: center;
+                display: grid;
+                align-items: center;
+                justify-items: center;
+
                 &-filter {
                     cursor: pointer;
                     &_inactive {
@@ -43,15 +58,38 @@ header {
                 }
 
                 a {
-                    cursor: pointer;
-                    text-transform: uppercase;
-                    font-size: 14px;
-                    font-weight: bold;
-                    display: block;
-                    color: white;
-                    text-align: center;
-                    padding: 14px 16px;
-                    text-decoration: none;
+                    @include a-teg-decoration();
+                }
+
+                &_highlight {
+                    display: grid;
+                    align-items: center;
+                    justify-items: center;
+
+                    a {
+                        @include a-teg-decoration();
+                        position: relative;
+                        &:after {
+                            position: absolute;
+                            content: '';
+                            height: 2px;
+                            bottom: -5px;
+                            margin: 0 auto;
+                            left: 0;
+                            right: 0;
+                            width: 80%;
+                            background: white;
+                            -o-transition: 0.5s;
+                            -ms-transition: 0.5s;
+                            -moz-transition: 0.5s;
+                            -webkit-transition: 0.5s;
+                            transition: 0.5s;
+                        }
+                        &:hover:after {
+                            width: 100%;
+                            background: orange;
+                        }
+                    }
                 }
             }
         }

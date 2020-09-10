@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import logo from '../../images/logo/logo.png';
@@ -14,12 +14,11 @@ const headerItems = [
 
 const Header = () => {
     const [isFilterActive, setFilterActive] = useState(false);
+    const [currentPath, setCurrentPath] = useState(null);
 
     const isAuthenticated = useSelector(
         (state) => state.authentication.isAuthenticated
     );
-
-    const currentUrl = window.location.pathname;
 
     return (
         <header>
@@ -31,7 +30,12 @@ const Header = () => {
                     <ul className="header__items">
                         {headerItems.map((item) => (
                             <li
-                                className="header__items-instance"
+                                onClick={() => setCurrentPath(item.path)}
+                                className={`header__items-instance${
+                                    currentPath === item.path
+                                        ? '_highlight'
+                                        : ''
+                                }`}
                                 key={item.name}
                             >
                                 <Link to={item.path}>{item.name}</Link>

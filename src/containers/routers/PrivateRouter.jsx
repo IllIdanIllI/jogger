@@ -13,10 +13,7 @@ export const PrivateRoute = ({ children, ...rest }) => {
 
     useEffect(() => {
         const token = localStorage.getItem(TOKEN);
-
-        if (!token && isAuthenticate) {
-            onLogOut();
-        }
+        if (!token && isAuthenticate) onLogOut();
     });
 
     return (

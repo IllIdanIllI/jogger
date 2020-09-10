@@ -7,7 +7,7 @@ import { PrivateRoute } from './containers/routers/PrivateRouter';
 import JogsPage from './containers/JogsPage';
 import InfoPage from './containers/InfoPage';
 import ContactPage from './containers/ContactPage';
-import { JOGS_URL, INFO_URL, LOGIN_URL } from './constants/constants';
+import { JOGS_URL, INFO_URL, LOGIN_URL, CONTACT_URL } from './constants/constants';
 
 function App() {
     return (
