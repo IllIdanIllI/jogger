@@ -1,4 +1,4 @@
-import { RECEIVE_JOGS } from '../constants/types';
+import { RECEIVE_JOGS, ADD_JOG } from '../constants/types';
 
 const initialState = {
     jogs: [],

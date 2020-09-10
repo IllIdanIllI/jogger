@@ -1,0 +1,62 @@
+@import '../../style/colors';
+
+$buttonHeight: 60px;
+
+.add-jogs-container {
+    position: relative;
+    top: 10vh;
+    justify-items: center;
+    &__window {
+        margin: auto;
+        width: 503px;
+        height: 379px;
+        border-radius: 44px;
+        background-color: $apple-green;
+        &-cross {
+            cursor: pointer;
+            position: relative;
+            float: right;
+            top: 24px;
+            right: 27px;
+        }
+        &-form {
+            display: grid;
+            top: 90px;
+            justify-items: center;
+            &__inputs {
+                display: grid;
+                grid-template-columns: min-content 236px;
+                grid-column-gap: 16px;
+                grid-row-gap: 25px;
+                align-items: center;
+                input {
+                    padding-left: 8px;
+                    width: 236px;
+                    font-family: SFUIText;
+                    height: 31px;
+                    border-radius: 7px;
+                    border: solid 1px #979797;
+                    background-color: $white-two;
+                }
+                label {
+                    font-size: 16px;
+                }
+            }
+            &__button {
+                margin-top: 46px;
+                cursor: pointer;
+                background-color: transparent;
+                width: 320px;
+                height: 42px;
+                border-radius: 25.2px;
+                border: solid 2px $white-two;
+                span {
+                    color: $white-two;
+                    font-size: 12.6px;
+                    font-weight: bold;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

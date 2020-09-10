@@ -1,0 +1,35 @@
+@import '../../style/colors';
+
+.jog-instance-container {
+    display: grid;
+    grid-template-columns: min-content max-content;
+    grid-column-gap: 47px;
+    width: 100%;
+    margin-bottom: 80px;
+
+    &__description {
+        display: grid;
+        grid-row-gap: 5px;
+
+        &__date {
+            font-size: 14px;
+            color: $text-grey;
+        }
+
+        &__parameters {
+            font-size: 14px;
+
+            &-name {
+                font-weight: 500;
+            }
+
+            &-value {
+                color: $text-grey;
+            }
+        }
+    }
+
+    &:last-child{
+        margin-bottom: 0;
+    }
+}

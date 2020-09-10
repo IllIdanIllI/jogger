@@ -1,6 +1,6 @@
 import axiosInstance, { authorizationHeader } from './axios';
-import { DATA_URL, TOKEN } from '../constants/constants';
-import { RECEIVE_JOGS } from '../constants/types';
+import { DATA_URL, TOKEN, JOGS_URL } from '../constants/constants';
+import { RECEIVE_JOGS, ADD_JOG } from '../constants/types';
 
 export const receiveJogs = () => (dispatch) => {
     const token = localStorage.getItem(TOKEN);
@@ -14,6 +14,14 @@ export const receiveJogs = () => (dispatch) => {
                 payload: response.data.response,
             })
         );
+};
+
+export const addJogs = (jog) => async (dispatch) => {
+    const token = localStorage.getItem(TOKEN);
+    const body = JSON.stringify(jog);
+    await axiosInstance.post(`${DATA_URL}/jog`, body, {
+        headers: { Authorization: authorizationHeader(token) },
+    });
 };
 
 // export const reAuthenticate = (token) => (dispatch) => {

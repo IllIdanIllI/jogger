@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './EmptyJogsPage.scss';
 import { ReactComponent as SadEmoji } from '../../images/emptyPage/empty-page-emoji.svg';
+import { JOGS_URL, ADD_URL } from '../../constants/constants';
 
 const EmptyJogsPage = () => {
     return (
@@ -11,9 +13,11 @@ const EmptyJogsPage = () => {
                     Nothing is there
                 </span>
             </div>
-            <button className="empty-jogs-container__creation">
-                <span>Create your first jog</span>
-            </button>
+            <Link to={JOGS_URL + ADD_URL}>
+                <button className="empty-jogs-container__creation">
+                    <span>Create your first jog</span>
+                </button>
+            </Link>
         </div>
     );
 };
