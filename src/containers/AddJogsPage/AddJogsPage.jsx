@@ -5,29 +5,58 @@ import './AddJogsPage.scss';
 import { ReactComponent as Cross } from '../../images/cancel/cancel.svg';
 import { JOGS_URL, ADD_URL } from '../../constants/constants';
 import { useActions } from '../../custom/customHooks';
-import { addJogs } from '../../actions/jogsActions';
-import { dateToInput } from '../../service/dataService';
+import { addJog, updateJog } from '../../actions/jogsActions';
+import {
+    dateToInput,
+    dateFromTimestampToInput,
+} from '../../service/dataService';
 
 const AddJogsPage = () => {
-    const defineDate = useMemo(() => dateToInput(), []);
-
     const location = useLocation();
     const history = useHistory();
+
+    const jogs = useSelector((state) => state.jogStore.jogs);
 
     const isUpdate = useMemo(
         () => (location.pathname === JOGS_URL + ADD_URL ? false : true),
         [location.pathname]
     );
+    const defineDate = useMemo(() => dateToInput(), []);
+    const formData = useMemo(() => {
+        const paths = location.pathname.split('/');
+        if (Array.isArray(jogs) && jogs.length > 0) {
+            const jog = jogs.find((jog) => paths[paths.length - 1] == jog.id);
+            if (jog) {
+                jog.date = dateFromTimestampToInput(jog.date);
+                return jog;
+            } else {
+                return {};
+            }
+        } else if (jogs) {
+            jogs.date = dateFromTimestampToInput(jogs.date);
+            return jogs;
+        } else {
+            return {};
+        }
+    }, [jogs]);
 
-    const formData = useSelector((state) => state.jogStore.jogs[0]);
-
-    const [onAddJogs] = useActions([addJogs]);
+    const [onAddJogs, onUpdateJog] = useActions([addJog, updateJog]);
 
     const [distance, setDistance] = useState(isUpdate ? formData.distance : 0);
     const [time, setTime] = useState(isUpdate ? formData.time : 0);
     const [date, setDate] = useState(isUpdate ? formData.date : defineDate);
 
-    const onUpdateJog = () => {};
+    const updateJogHandler = () => {
+        const newJog = {
+            date,
+            time,
+            distance,
+            jog_id: formData.id,
+            user_id: formData.user_id,
+        };
+        onUpdateJog(newJog);
+        setTimeout(() => history.push(JOGS_URL));
+    };
 
     const addJogHandler = () => {
         onAddJogs({ distance, time, date });
@@ -67,7 +96,7 @@ const AddJogsPage = () => {
                     </div>
                     {isUpdate ? (
                         <button
-                            onClick={() => onUpdateJog()}
+                            onClick={() => updateJogHandler()}
                             className="add-jogs-container__window-form__button"
                         >
                             <span>Update</span>

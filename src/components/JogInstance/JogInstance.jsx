@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link, NavLink } from 'react-router-dom';
 import './JogInstance.scss';
 import { ReactComponent as Icon } from '../../images/jogIcon/jogIcon.svg';
 import { dateFromTimestamp } from '../../service/dataService';
+import { JOGS_URL, EDIT_URL } from '../../constants/constants';
 
 const speed = 15;
 
@@ -10,7 +12,10 @@ const JogInstance = ({ jog }) => {
     const date = dateFromTimestamp(jog.date);
 
     return (
-        <div className="jog-instance-container">
+        <NavLink
+            className="jog-instance-container"
+            to={`${JOGS_URL}${EDIT_URL}/${jog.id}`}
+        >
             <Icon className="jog-instance-container__icon" />
             <span className="jog-instance-container__description">
                 <span className="jog-instance-container__description__date">
@@ -43,13 +48,13 @@ const JogInstance = ({ jog }) => {
                     </span>
                 </div>
             </span>
-        </div>
+        </NavLink>
     );
 };
 JogInstance.propTypes = {
     jog: PropTypes.shape({
         id: PropTypes.number.isRequired,
-        date: PropTypes.number.isRequired,
+        date: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
         distance: PropTypes.number.isRequired,
         time: PropTypes.number.isRequired,
         user_id: PropTypes.string.isRequired,

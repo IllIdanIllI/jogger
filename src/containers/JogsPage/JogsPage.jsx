@@ -15,7 +15,7 @@ const JogsPage = () => {
     const jogs = useSelector((state) => state.jogStore.jogs);
 
     useEffect(() => onReceiveJogs(), []);
-    console.log(jogs);
+    
     if (Array.isArray(jogs) && jogs.length === 0) return <EmptyJogsPage />;
     return (
         <div className="jogs-container">

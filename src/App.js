@@ -14,6 +14,7 @@ import {
     LOGIN_URL,
     CONTACT_URL,
     ADD_URL,
+    EDIT_URL,
 } from './constants/constants';
 
 function App() {
@@ -34,7 +35,13 @@ function App() {
                     <PrivateRoute exact path={CONTACT_URL}>
                         <ContactPage />
                     </PrivateRoute>
-                    <PrivateRoute exact path={JOGS_URL + ADD_URL}>
+                    <PrivateRoute
+                        exact
+                        path={[
+                            `${JOGS_URL}${ADD_URL}`,
+                            `${JOGS_URL}${EDIT_URL}/:id`,
+                        ]}
+                    >
                         <AddJogsPage />
                     </PrivateRoute>
                 </Switch>
