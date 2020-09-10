@@ -16,11 +16,6 @@ export default (state = initialState, action) => {
                 jogs,
                 users,
             };
-        case SET_JOGS:
-            return {
-                ...state,
-                jogs: payload,
-            };
         case TOGGLE_FILTER:
             return {
                 ...state,

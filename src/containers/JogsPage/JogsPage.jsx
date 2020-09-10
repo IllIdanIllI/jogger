@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './JogsPage.scss';
@@ -26,21 +26,17 @@ const JogsPage = () => {
     );
     const [dateTo, setDateTo] = useState(dateToInput());
 
-    useEffect(() => onReceiveJogs(), []);
+    useEffect(() => {
+        onReceiveJogs();
+    }, []);
 
     useEffect(() => {
         if (isFilterActive) {
-            onSetJogs(
-                jogs.filter(
-                    (jog) =>
-                        dateFromTimestampToInput(jog.date) <= dateTo &&
-                        dateFromTimestampToInput(jog.date) >= dateFrom
-                )
-            );
+            onSetJogs(dateTo, dateFrom);
         } else {
             onReceiveJogs();
         }
-    }, [isFilterActive]);
+    }, [isFilterActive, dateFrom, dateTo]);
 
     if (Array.isArray(jogs) && jogs.length === 0) return <EmptyJogsPage />;
     return (
