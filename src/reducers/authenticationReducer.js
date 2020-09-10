@@ -3,7 +3,7 @@ import { TOKEN } from '../constants/constants';
 
 const initialState = {
     token: localStorage.getItem(TOKEN),
-    isAuthenticated: false,
+    isAuthenticated: localStorage.getItem(TOKEN) ? true : false,
     errorMessage: '',
 };
 
