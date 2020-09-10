@@ -1,8 +1,9 @@
-import { RECEIVE_JOGS, ADD_JOG } from '../constants/types';
+import { RECEIVE_JOGS, SET_JOGS, TOGGLE_FILTER } from '../constants/types';
 
 const initialState = {
     jogs: [],
     users: [],
+    isFilterActive: false,
 };
 
 export default (state = initialState, action) => {
@@ -15,19 +16,16 @@ export default (state = initialState, action) => {
                 jogs,
                 users,
             };
-        // case RE_AUTHENTICATION:
-        //     return {
-        //         ...state,
-        //         token: payload,
-        //         isAuthenticated: true,
-        //     };
-        // case LOG_OUT:
-        //     localStorage.removeItem(TOKEN);
-        //     return {
-        //         ...state,
-        //         token: null,
-        //         isAuthenticated: false,
-        //     };
+        case SET_JOGS:
+            return {
+                ...state,
+                jogs: payload,
+            };
+        case TOGGLE_FILTER:
+            return {
+                ...state,
+                isFilterActive: payload,
+            };
         default:
             return { ...state };
     }

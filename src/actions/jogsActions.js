@@ -1,6 +1,6 @@
 import axiosInstance, { authorizationHeader } from './axios';
 import { DATA_URL, TOKEN } from '../constants/constants';
-import { RECEIVE_JOGS } from '../constants/types';
+import { RECEIVE_JOGS, SET_JOGS, TOGGLE_FILTER } from '../constants/types';
 
 export const receiveJogs = () => (dispatch) => {
     const token = localStorage.getItem(TOKEN);
@@ -14,6 +14,20 @@ export const receiveJogs = () => (dispatch) => {
                 payload: response.data.response,
             })
         );
+};
+
+export const setJogs = (jogs) => (dispatch) => {
+    dispatch({
+        type: SET_JOGS,
+        payload: jogs,
+    });
+};
+
+export const toggleFilter = (state) => (dispatch) => {
+    dispatch({
+        type: TOGGLE_FILTER,
+        payload: !state,
+    });
 };
 
 export const addJog = (jog) => async (dispatch) => {

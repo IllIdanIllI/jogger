@@ -32,9 +32,6 @@ const AddJogsPage = () => {
             } else {
                 return {};
             }
-        } else if (jogs) {
-            jogs.date = dateFromTimestampToInput(jogs.date);
-            return jogs;
         } else {
             return {};
         }

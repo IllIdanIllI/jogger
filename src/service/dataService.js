@@ -8,8 +8,7 @@ export const dateFromTimestamp = (timestamp, separator = '.') => {
     }${separator}${year}`;
 };
 
-export const dateToInput = (separator = '-') => {
-    const newDate = new Date();
+export const dateToInput = (newDate = new Date(), separator = '-') => {
     const date = newDate.getDate();
     const month = newDate.getMonth() + 1;
     const year = newDate.getFullYear();

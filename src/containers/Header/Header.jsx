@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import logo from '../../images/logo/logo.png';
 import { ReactComponent as Filter } from '../../images/filter/filter.svg';
 import './Header.scss';
 import { JOGS_URL, INFO_URL, CONTACT_URL } from '../../constants/constants';
+import { toggleFilter } from '../../actions/jogsActions';
+import { useActions } from '../../custom/customHooks';
 
 const headerItems = [
     { name: 'Jogs', path: JOGS_URL },
@@ -13,12 +15,16 @@ const headerItems = [
 ];
 
 const Header = () => {
-    const [isFilterActive, setFilterActive] = useState(false);
     const [currentPath, setCurrentPath] = useState(null);
 
     const isAuthenticated = useSelector(
         (state) => state.authentication.isAuthenticated
     );
+    const isFilterActive = useSelector(
+        (state) => state.jogStore.isFilterActive
+    );
+
+    const [onToggleFilter] = useActions([toggleFilter]);
 
     return (
         <header>
@@ -43,7 +49,7 @@ const Header = () => {
                         ))}
                         <li className={`header__items-instance`}>
                             <Filter
-                                onClick={() => setFilterActive((prev) => !prev)}
+                                onClick={() => onToggleFilter(isFilterActive)}
                                 className={`header__items-instance-filter${
                                     isFilterActive ? '' : '_inactive'
                                 }`}
