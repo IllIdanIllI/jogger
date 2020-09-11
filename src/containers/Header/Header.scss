@@ -21,6 +21,12 @@ header {
             margin-left: 37px;
             float: left;
             z-index: 25;
+            &_green {
+                position: relative;
+                g {
+                    fill: $apple-green;
+                }
+            }
         }
 
         &__items {
@@ -139,13 +145,6 @@ header {
 
         #switcher:checked ~ .header__items {
             right: 0;
-        }
-
-        #switcher:checked ~ .header__logo {
-            position: relative;
-            g {
-                fill: $apple-green;
-            }
         }
     }
 }

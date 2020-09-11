@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import menu from '../../images/menu/menu.png';
@@ -17,13 +17,14 @@ const headerItems = [
 ];
 
 const Header = () => {
-
     const isAuthenticated = useSelector(
         (state) => state.authentication.isAuthenticated
     );
     const isFilterActive = useSelector(
         (state) => state.jogStore.isFilterActive
     );
+
+    const [checked, setChecked] = useState(false);
 
     const [onToggleFilter] = useActions([toggleFilter], []);
 
@@ -38,14 +39,26 @@ const Header = () => {
     return (
         <header>
             <Link to="/">
-                <Logo className="header__logo" />
+                <Logo
+                    className={`header__logo ${
+                        checked ? 'header__logo_green' : ''
+                    }`}
+                />
             </Link>
 
             {isAuthenticated && (
                 <nav>
-                    <input type="checkbox" id="switcher" />
+                    <input
+                        type="checkbox"
+                        defaultChecked={checked}
+                        id="switcher"
+                    />
                     <label htmlFor="switcher" className="show-menu-btn">
-                        <img src={menu} alt="Menu" />
+                        <img
+                            src={menu}
+                            alt="Menu"
+                            onClick={() => setChecked(true)}
+                        />
                     </label>
                     <div className={`header__items-filter`}>
                         <Filter
@@ -64,12 +77,17 @@ const Header = () => {
                                 className={`header__items-instance`}
                                 key={item.name}
                                 to={item.path}
+                                onClick={() => {
+                                    if (checked) {
+                                        setChecked(false);
+                                    }
+                                }}
                             >
                                 {item.name}
                             </Link>
                         ))}
                         <label htmlFor="switcher" className="hide-menu-btn">
-                            <Cross />
+                            <Cross onClick={() => setChecked(false)} />
                         </label>
                     </ul>
                 </nav>
