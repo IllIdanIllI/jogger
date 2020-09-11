@@ -23,3 +23,31 @@
         }
     }
 }
+
+@media (max-width: 858px) {
+    .info-container {
+        position: relative;
+        width: 90vw;
+        margin-right: auto;
+        margin-left: auto;
+        top: 14pt;
+        &__header {
+            color: $apple-green;
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 5pt;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        &__content {
+            & :first-child {
+                margin-bottom: 25pt;
+            }
+            div {
+                color: $text-grey;
+                font-size: 14px;
+                line-height: 1.71;
+            }
+        }
+    }
+}
