@@ -57,7 +57,10 @@ const Header = () => {
                         ))}
                         <li className={`header__items-instance`}>
                             <Filter
-                                onClick={() => onToggleFilter(isFilterActive)}
+                                onClick={() =>
+                                    location.pathname === JOGS_URL &&
+                                    onToggleFilter(isFilterActive)
+                                }
                                 className={`header__items-instance-filter${
                                     isFilterActive ? '' : '_inactive'
                                 }`}
