@@ -5,8 +5,10 @@
     width: 46vw;
     margin-right: auto;
     margin-left: auto;
-    top: 85px;
+    margin-top: 0;
+    top: 116px;
     &__header {
+        margin-top: 0;
         color: $apple-green;
         text-transform: uppercase;
         font-size: 36px;
