@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthorizationPage test 1`] = `
+<div>
+  <div
+    className="login-form-wrapper"
+  >
+    <svg
+      className="login-form-wrapper__img"
+    >
+      bear-face.svg
+    </svg>
+    <button
+      className="login-form-wrapper__btn"
+      onClick={[Function]}
+    >
+      Let me in
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Header test 1`] = `
+<header>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    <svg
+      className="header__logo "
+    >
+      logo.svg
+    </svg>
+  </a>
+</header>
+`;

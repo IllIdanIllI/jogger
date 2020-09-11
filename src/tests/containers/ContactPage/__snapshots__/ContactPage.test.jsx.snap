@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactPage test 1`] = `
+<div
+  className="contact-container"
+>
+  For mo information call: 102
+</div>
+`;

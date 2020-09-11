@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Jog page test 1`] = `
+<div
+  className="empty-jogs-container"
+>
+  <div
+    className="empty-jogs-container__notification"
+  >
+    <svg
+      className="empty-jogs-container__notification-emoji"
+    >
+      empty-page-emoji.svg
+    </svg>
+    <span
+      className="empty-jogs-container__notification-text"
+    >
+      Nothing is there
+    </span>
+  </div>
+  <a
+    href="/jogs/add"
+    onClick={[Function]}
+  >
+    <button
+      className="empty-jogs-container__creation"
+    >
+      <span>
+        Create your first jog
+      </span>
+    </button>
+  </a>
+</div>
+`;
