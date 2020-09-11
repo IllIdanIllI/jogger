@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './AuthorizationPage.scss';
-import bearFace from '../../images/bear-face/bear-face.png';
+import { ReactComponent as BearFace} from '../../images/bear-face/bear-face.svg';
 import { useActions } from '../../custom/customHooks';
 import {
     authenticate,
@@ -33,7 +33,8 @@ const AuthorizationPage = ({ isAuthenticate }) => {
     return (
         <div>
             <div className="login-form-wrapper">
-                <img src={bearFace} className="login-form-wrapper__img" alt="Bear" />
+                <BearFace className="login-form-wrapper__img"/>
+                {/* <img src={bearFace} className="login-form-wrapper__img" alt="Bear" /> */}
                 <button
                     onClick={() => onAuthenticate()}
                     className="login-form-wrapper__btn"

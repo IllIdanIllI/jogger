@@ -9,7 +9,13 @@ html {
 }
 
 .content-container {
-    margin-top: 116px;
-    height: 100%;
     width: 100%;
+    min-height: calc(100vh - 116px);
+}
+
+@media (max-width: 858px){
+    .content-container {
+        width: 100%;
+        min-height: 100%;
+    }
 }
