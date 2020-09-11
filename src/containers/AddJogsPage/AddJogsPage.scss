@@ -4,14 +4,16 @@ $buttonHeight: 60px;
 
 .add-jogs-container {
     position: relative;
-    top: 10vh;
+    top: calc(116px + 10vh);
     justify-items: center;
+
     &__window {
         margin: auto;
         width: 503px;
         height: 379px;
         border-radius: 44px;
         background-color: $apple-green;
+
         &-cross {
             cursor: pointer;
             position: relative;
@@ -19,6 +21,7 @@ $buttonHeight: 60px;
             top: 24px;
             right: 27px;
         }
+
         &-form {
             display: grid;
             top: 90px;
@@ -55,6 +58,66 @@ $buttonHeight: 60px;
                     font-size: 12.6px;
                     font-weight: bold;
                     text-align: center;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .add-jogs-container {
+        top: calc(116px + 10vh);
+        // justify-items: center;
+
+        &__window {
+            margin: auto;
+            width: 90vw;
+            height: 60vh;
+            border-radius: 44px;
+            background-color: $apple-green;
+
+            &-form {
+                margin: 0;
+                top: 10%;
+                height: 100%;
+                width: 100%;
+                grid-template-rows: min-content min-content;
+                grid-row-gap: 40px;
+
+                &__inputs {
+                    display: grid;
+                    grid-template-rows: repeat(6, min-content);
+                    grid-template-columns: unset;
+                    width: 90%;
+                    grid-row-gap: 15px;
+                    justify-items: center;
+                    align-items: center;
+
+                    input {
+                        float: left;
+                        padding-left: 8px;
+                        left: 5%;
+                        width: 100%;
+                        font-family: SFUIText;
+                        height: 31px;
+                        border-radius: 7px;
+                        border: solid 1px #979797;
+                        background-color: $white-two;
+                    }
+                    label {
+                        justify-self: self-start;
+                        height: 14px;
+                        font-size: 14px;
+                    }
+                }
+                &__button {
+                    margin-top: 0;
+                    span {
+                        color: $white-two;
+                        font-size: 12.6px;
+                        font-weight: bold;
+                        text-align: center;
+                    }
                 }
             }
         }

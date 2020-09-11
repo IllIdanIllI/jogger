@@ -2,6 +2,7 @@
 
 .filter {
     height: 60px;
+    top: 116px;
     background-color: $white;
     &-container {
         display: grid;
@@ -34,7 +35,7 @@
 
 .jogs-container {
     position: relative;
-    top: 5vh;
+    top: calc(116px + 40px);
     margin-right: auto;
     margin-left: auto;
     width: min-content;

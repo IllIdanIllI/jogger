@@ -17,7 +17,6 @@ const headerItems = [
 ];
 
 const Header = () => {
-    const [currentPath, setCurrentPath] = useState(null);
 
     const isAuthenticated = useSelector(
         (state) => state.authentication.isAuthenticated
@@ -45,7 +44,7 @@ const Header = () => {
             {isAuthenticated && (
                 <nav>
                     <input type="checkbox" id="switcher" />
-                    <label htmlFor="switcher" class="show-menu-btn">
+                    <label htmlFor="switcher" className="show-menu-btn">
                         <img src={menu} alt="Menu" />
                     </label>
                     <div className={`header__items-filter`}>
@@ -62,19 +61,14 @@ const Header = () => {
                     <ul className="header__items">
                         {headerItems.map((item) => (
                             <Link
-                                onClick={() => setCurrentPath(item.path)}
-                                className={`header__items-instance${
-                                    currentPath === item.path
-                                        ? '_highlight'
-                                        : ''
-                                }`}
+                                className={`header__items-instance`}
                                 key={item.name}
                                 to={item.path}
                             >
                                 {item.name}
                             </Link>
                         ))}
-                        <label for="switcher" class="hide-menu-btn">
+                        <label htmlFor="switcher" className="hide-menu-btn">
                             <Cross />
                         </label>
                     </ul>
