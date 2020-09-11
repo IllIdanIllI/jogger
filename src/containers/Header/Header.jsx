@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import logo from '../../images/logo/logo.png';
+import menu from '../../images/menu/menu.png';
+import { ReactComponent as Cross } from '../../images/cancel/cancel.svg';
+import { ReactComponent as Logo } from '../../images/logo/logo.svg';
 import { ReactComponent as Filter } from '../../images/filter/filter.svg';
 import './Header.scss';
 import { JOGS_URL, INFO_URL, CONTACT_URL } from '../../constants/constants';
@@ -37,13 +39,29 @@ const Header = () => {
     return (
         <header>
             <Link to="/">
-                <img src={logo} className="header__logo" alt="Logo" />
+                <Logo className="header__logo" />
             </Link>
+
             {isAuthenticated && (
                 <nav>
+                    <input type="checkbox" id="switcher" />
+                    <label htmlFor="switcher" class="show-menu-btn">
+                        <img src={menu} alt="Menu" />
+                    </label>
+                    <div className={`header__items-filter`}>
+                        <Filter
+                            onClick={() =>
+                                location.pathname === JOGS_URL &&
+                                onToggleFilter(isFilterActive)
+                            }
+                            className={`header__items-filter-instance${
+                                isFilterActive ? '' : '_inactive'
+                            }`}
+                        />
+                    </div>
                     <ul className="header__items">
                         {headerItems.map((item) => (
-                            <li
+                            <Link
                                 onClick={() => setCurrentPath(item.path)}
                                 className={`header__items-instance${
                                     currentPath === item.path
@@ -51,21 +69,14 @@ const Header = () => {
                                         : ''
                                 }`}
                                 key={item.name}
+                                to={item.path}
                             >
-                                <Link to={item.path}>{item.name}</Link>
-                            </li>
+                                {item.name}
+                            </Link>
                         ))}
-                        <li className={`header__items-instance`}>
-                            <Filter
-                                onClick={() =>
-                                    location.pathname === JOGS_URL &&
-                                    onToggleFilter(isFilterActive)
-                                }
-                                className={`header__items-instance-filter${
-                                    isFilterActive ? '' : '_inactive'
-                                }`}
-                            />
-                        </li>
+                        <label for="switcher" class="hide-menu-btn">
+                            <Cross />
+                        </label>
                     </ul>
                 </nav>
             )}

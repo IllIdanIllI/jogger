@@ -6,60 +6,35 @@
     font-size: 14px;
     font-weight: bold;
     color: white;
-    text-align: center;
     text-decoration: none;
 }
 
 header {
-    display: grid;
     width: 100%;
     height: 116px;
     position: fixed;
-    top: 0;
-    left: 0;
     z-index: 10;
     background-color: $apple-green;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
     .header {
         &__logo {
+            margin-top: 28px;
             margin-left: 37px;
             float: left;
-            width: 147px;
-            height: 56px;
         }
 
         &__items {
             float: right;
-            display: grid;
-            list-style-type: none;
-            grid-template-columns: repeat(4, 1fr);
+            line-height: 116px;
+            margin: 0;
 
             &-instance {
-                float: left;
-                text-align: center;
-                display: grid;
-                align-items: center;
-                justify-items: center;
+                color: #fff;
+                text-transform: uppercase;
+                text-decoration: none;
+                padding: 0 20px;
+                transition: 0.4s;
 
-                &-filter {
-                    cursor: pointer;
-                    &_inactive {
-                        cursor: pointer;
-                        g {
-                            path {
-                                fill: #ffffff;
-                            }
-                            rect {
-                                stroke-width: 0;
-                            }
-                        }
-                    }
-                }
-
-                a {
-                    @include a-teg-decoration();
-                }
+                @include a-teg-decoration();
 
                 &_highlight {
                     display: grid;
@@ -92,6 +67,96 @@ header {
                     }
                 }
             }
+
+            &-filter {
+                position: relative;
+                top: 37px;
+                margin-right: 20px;
+                float: right;
+                cursor: pointer;
+                &-instance {
+                    &_inactive {
+                        cursor: pointer;
+                        g {
+                            path {
+                                fill: #ffffff;
+                            }
+                            rect {
+                                stroke-width: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .show-menu-btn,
+    .hide-menu-btn {
+        transition: 0.4s;
+        cursor: pointer;
+        display: none;
+    }
+
+    .show-menu-btn {
+        float: right;
+    }
+
+    #switcher {
+        position: absolute;
+        visibility: hidden;
+        z-index: -10;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    header {
+        .header {
+            &__items {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background-color: white;
+                right: -100%;
+                top: 0;
+                text-align: center;
+                padding: 80px 0;
+                line-height: normal;
+                transition: 0.7s;
+
+                &-instance {
+                    color: $dark-grey;
+                    font-size: 20pt;
+                    display: block;
+                    padding: 20px;
+                    &:hover {
+                        color: $apple-green;
+                    }
+                }
+
+                &-filter{
+                    right: 5vw;
+                }
+            }
+        }
+
+        .show-menu-btn {
+            display: block;
+            margin-top: 45px;
+            margin-right: 36px;
+        }
+
+        .hide-menu-btn {
+            display: block;
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            svg path {
+                fill: $text-grey;
+            }
+        }
+
+        #switcher:checked ~ .header__items {
+            right: 0;
         }
     }
 }
