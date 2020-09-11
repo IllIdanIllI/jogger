@@ -20,6 +20,7 @@ header {
             margin-top: 28px;
             margin-left: 37px;
             float: left;
+            z-index: 25;
         }
 
         &__items {
@@ -138,6 +139,13 @@ header {
 
         #switcher:checked ~ .header__items {
             right: 0;
+        }
+
+        #switcher:checked ~ .header__logo {
+            position: relative;
+            g {
+                fill: $apple-green;
+            }
         }
     }
 }

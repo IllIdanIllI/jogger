@@ -4,6 +4,7 @@
     display: grid;
     grid-template-columns: min-content max-content;
     grid-column-gap: 47px;
+    justify-content: center;
     width: 100%;
     margin-bottom: 80px;
     text-decoration: none;
@@ -31,7 +32,15 @@
         }
     }
 
-    &:last-child{
+    &:last-child {
         margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .jog-instance-container {
+        position: relative;
+        padding-bottom: 60px;
+        border-bottom: 1px solid $text-grey;    
     }
 }

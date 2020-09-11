@@ -47,3 +47,10 @@
         right: 40px;
     }
 }
+
+@media screen and (max-width: 800px) {
+    .jogs-container {
+        top: calc(116px + 40px);
+        width: 100%;
+    }
+}
