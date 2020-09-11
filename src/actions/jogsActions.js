@@ -1,6 +1,6 @@
 import axiosInstance, { authorizationHeader } from './axios';
 import { DATA_URL, TOKEN } from '../constants/constants';
-import { RECEIVE_JOGS, SET_JOGS, TOGGLE_FILTER } from '../constants/types';
+import { RECEIVE_JOGS, TOGGLE_FILTER } from '../constants/types';
 import { dateFromTimestampToInput } from '../service/dataService';
 
 export const receiveJogs = () => (dispatch) => {

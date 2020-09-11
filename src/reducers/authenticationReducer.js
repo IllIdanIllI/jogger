@@ -2,9 +2,7 @@ import { AUTHENTICATION, LOG_OUT, RE_AUTHENTICATION } from '../constants/types';
 import { TOKEN } from '../constants/constants';
 
 const initialState = {
-    token: localStorage.getItem(TOKEN),
     isAuthenticated: localStorage.getItem(TOKEN) ? true : false,
-    errorMessage: '',
 };
 
 export default (state = initialState, action) => {
@@ -14,23 +12,20 @@ export default (state = initialState, action) => {
             localStorage.setItem(TOKEN, payload);
             return {
                 ...state,
-                token: payload,
                 isAuthenticated: true,
             };
         case RE_AUTHENTICATION:
             return {
                 ...state,
-                token: payload,
                 isAuthenticated: true,
             };
         case LOG_OUT:
             localStorage.removeItem(TOKEN);
             return {
                 ...state,
-                token: null,
                 isAuthenticated: false,
             };
         default:
-            return { ...state };
+            return state;
     }
 };

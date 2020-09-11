@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './JogsPage.scss';
@@ -8,10 +8,7 @@ import EmptyJogsPage from '../../components/EmptyJogsPage';
 import JogInstance from '../../components/JogInstance';
 import { ReactComponent as Plus } from '../../images/plus/addItem.svg';
 import { JOGS_URL, ADD_URL } from '../../constants/constants';
-import {
-    dateToInput,
-    dateFromTimestampToInput,
-} from '../../service/dataService';
+import { dateToInput } from '../../service/dataService';
 
 const JogsPage = () => {
     const [onReceiveJogs, onSetJogs] = useActions([receiveJogs, setJogs]);
@@ -31,11 +28,7 @@ const JogsPage = () => {
     }, []);
 
     useEffect(() => {
-        if (isFilterActive) {
-            onSetJogs(dateTo, dateFrom);
-        } else {
-            onReceiveJogs();
-        }
+        isFilterActive ? onSetJogs(dateTo, dateFrom) : onReceiveJogs();
     }, [isFilterActive, dateFrom, dateTo]);
 
     if (Array.isArray(jogs) && jogs.length === 0) return <EmptyJogsPage />;

@@ -33,7 +33,7 @@ const AuthorizationPage = ({ isAuthenticate }) => {
     return (
         <div>
             <div className="login-form-wrapper">
-                <img src={bearFace} className="login-form-wrapper__img" />
+                <img src={bearFace} className="login-form-wrapper__img" alt="Bear" />
                 <button
                     onClick={() => onAuthenticate()}
                     className="login-form-wrapper__btn"

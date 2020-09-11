@@ -22,6 +22,6 @@ export default (state = initialState, action) => {
                 isFilterActive: payload,
             };
         default:
-            return { ...state };
+            return state;
     }
 };

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import logo from '../../images/logo/logo.png';
 import { ReactComponent as Filter } from '../../images/filter/filter.svg';
@@ -24,12 +24,20 @@ const Header = () => {
         (state) => state.jogStore.isFilterActive
     );
 
-    const [onToggleFilter] = useActions([toggleFilter]);
+    const [onToggleFilter] = useActions([toggleFilter], []);
+
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.pathname !== JOGS_URL && isFilterActive) {
+            onToggleFilter(isFilterActive);
+        }
+    }, [location.pathname]);
 
     return (
         <header>
             <Link to="/">
-                <img src={logo} className="header__logo" />
+                <img src={logo} className="header__logo" alt="Logo" />
             </Link>
             {isAuthenticated && (
                 <nav>

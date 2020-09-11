@@ -1,5 +1,5 @@
 import axiosInstance from './axios';
-import { AUTH_URL, TOKEN } from '../constants/constants';
+import { AUTH_URL } from '../constants/constants';
 import { AUTHENTICATION, LOG_OUT, RE_AUTHENTICATION } from '../constants/types';
 
 export const authenticate = () => (dispatch) => {

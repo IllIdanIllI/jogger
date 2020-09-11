@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './JogInstance.scss';
 import { ReactComponent as Icon } from '../../images/jogIcon/jogIcon.svg';
 import { dateFromTimestamp } from '../../service/dataService';
