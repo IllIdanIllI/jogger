@@ -1,33 +1,45 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link, useHistory } from 'react-router-dom';
 import './AddJogsPage.scss';
 import { ReactComponent as Cross } from '../../images/cancel/cancel.svg';
 import { JOGS_URL, ADD_URL } from '../../constants/constants';
 import { useActions } from '../../custom/customHooks';
-import { addJog, updateJog } from '../../actions/jogsActions';
+import { addJog, updateJog, receiveJogs } from '../../actions/jogsActions';
 import {
     dateToInput,
     dateFromTimestampToInput,
 } from '../../service/dataService';
+import { ReactComponent as Loader } from '../../images/loader/loader.svg';
 
-const AddJogsPage = () => {
-    const location = useLocation();
+const AddJogsPage = ({ match }) => {
     const history = useHistory();
 
     const jogs = useSelector((state) => state.jogStore.jogs);
 
     const isUpdate = useMemo(
-        () => (location.pathname === JOGS_URL + ADD_URL ? false : true),
-        [location.pathname]
+        () => (match.url === JOGS_URL + ADD_URL ? false : true),
+        [match.url]
     );
     const defineDate = useMemo(() => dateToInput(), []);
+
+    useEffect(() => {
+        onReceive();
+    }, []);
+
+    const [date, setDate] = useState(defineDate);
+    const [distance, setDistance] = useState(0);
+    const [time, setTime] = useState(0);
+
     const formData = useMemo(() => {
-        const paths = location.pathname.split('/');
-        if (Array.isArray(jogs) && jogs.length > 0) {
-            const jog = jogs.find((jog) => paths[paths.length - 1] == jog.id);
+        if (Array.isArray(jogs) && jogs.length > 0 && isUpdate) {
+            const jog = jogs.find((jog) => match.params.id == jog.id);
             if (jog) {
                 jog.date = dateFromTimestampToInput(jog.date);
+                setDistance(jog.distance);
+                setTime(jog.time);
+                setDate(jog.date);
                 return jog;
             } else {
                 return {};
@@ -37,11 +49,11 @@ const AddJogsPage = () => {
         }
     }, [jogs]);
 
-    const [onAddJogs, onUpdateJog] = useActions([addJog, updateJog]);
-
-    const [distance, setDistance] = useState(isUpdate ? formData.distance : 0);
-    const [time, setTime] = useState(isUpdate ? formData.time : 0);
-    const [date, setDate] = useState(isUpdate ? formData.date : defineDate);
+    const [onAddJogs, onUpdateJog, onReceive] = useActions([
+        addJog,
+        updateJog,
+        receiveJogs,
+    ]);
 
     const updateJogHandler = () => {
         const newJog = {
@@ -110,6 +122,15 @@ const AddJogsPage = () => {
             </div>
         </div>
     );
+};
+
+AddJogsPage.propTypes = {
+    match: PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        path: PropTypes.string.isRequired,
+        isExact: PropTypes.bool.isRequired,
+        params: PropTypes.object.isRequired,
+    }).isRequired,
 };
 
 export default AddJogsPage;

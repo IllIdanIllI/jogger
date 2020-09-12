@@ -33,7 +33,7 @@ const AuthorizationPage = ({ isAuthenticate }) => {
 
     if (isAuthenticated) return <Redirect to="/jogs" />;
 
-    if (isLoading) return <Loader />;
+    if (isLoading && isAuthenticated) return <Loader />;
 
     return (
         <div>

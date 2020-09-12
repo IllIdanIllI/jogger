@@ -41,9 +41,8 @@ function App() {
                             `${JOGS_URL}${ADD_URL}`,
                             `${JOGS_URL}${EDIT_URL}/:id`,
                         ]}
-                    >
-                        <AddJogsPage />
-                    </PrivateRoute>
+                        component={AddJogsPage}
+                    />
                 </Switch>
             </div>
         </Router>
