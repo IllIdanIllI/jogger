@@ -1,4 +1,4 @@
-import { RECEIVE_JOGS, SET_JOGS, TOGGLE_FILTER } from '../constants/types';
+import { RECEIVE_JOGS, TOGGLE_FILTER } from '../constants/types';
 
 const initialState = {
     jogs: [],

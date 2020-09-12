@@ -1,18 +1,47 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import { mount } from 'enzyme';
 import { BrowserRouter as Router } from 'react-router-dom';
-import store from '../../../store';
+import { Provider } from 'react-redux';
 import JogPage from '../../../containers/JogsPage';
-import renderer from 'react-test-renderer';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import { receiveJogs } from '../../../actions/jogsActions';
+const mockStore = configureMockStore([thunk]);
 
-test('Jog page test', () => {
-    const component = renderer.create(
-        <Provider store={store}>
-            <Router>
-                <JogPage />
-            </Router>
-        </Provider>
-    );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+describe('<JogPage /> unit test', () => {
+    const initialState = {
+        authentication: { isAuthenticated: true },
+        jogStore: { isFilterActive: false, jogs: [] },
+    };
+    // const mockStore = configureStore();
+    let store, wrapper;
+
+    beforeEach(async () => {
+        store = mockStore(initialState);
+        wrapper = mount(
+            <Provider store={store}>
+                <Router>
+                    <JogPage />
+                </Router>
+            </Provider>
+        );
+        try {
+            await store.dispatch(receiveJogs());
+        } catch (e) {
+            expect(e.response.status).toEqual(401);
+        }
+    });
+    it('should be appropriate link', () => {
+        console.log(wrapper.debug());
+        const link = wrapper.find('Link');
+        expect(link.prop('to')).toEqual('/jogs/add');
+    });
+    it('should be text about empty', () => {
+        const span = wrapper.find('span').at(1);
+        expect(span).not.toBeNull();
+        expect(span.text()).toEqual('Create your first jog');
+    });
+    it('Match snap', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 });

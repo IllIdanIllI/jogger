@@ -1,16 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header test 1`] = `
-<header>
-  <a
-    href="/"
-    onClick={[Function]}
-  >
-    <svg
-      className="header__logo "
-    >
-      logo.svg
-    </svg>
-  </a>
-</header>
-`;
+exports[`<Header /> unit test Match snap 1`] = `ReactWrapper {}`;
