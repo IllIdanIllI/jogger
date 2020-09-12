@@ -1,9 +1,10 @@
-import { RECEIVE_JOGS, TOGGLE_FILTER } from '../constants/types';
+import { RECEIVE_JOGS, TOGGLE_FILTER, TOGGLE_LOADER } from '../constants/types';
 
 const initialState = {
     jogs: [],
     users: [],
     isFilterActive: false,
+    isLoading: true,
 };
 
 export default (state = initialState, action) => {
@@ -20,6 +21,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 isFilterActive: payload,
+            };
+        case TOGGLE_LOADER:
+            return {
+                ...state,
+                isLoading: payload,
             };
         default:
             return state;

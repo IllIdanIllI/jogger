@@ -9,11 +9,13 @@ import JogInstance from '../../components/JogInstance';
 import { ReactComponent as Plus } from '../../images/plus/addItem.svg';
 import { JOGS_URL, ADD_URL } from '../../constants/constants';
 import { dateToInput } from '../../service/dataService';
+import { ReactComponent as Loader } from '../../images/loader/loader.svg';
 
 const JogsPage = () => {
-    const [onReceiveJogs, onSetJogs] = useActions([receiveJogs, setJogs]);
+    const [onReceiveJogs, onSetJogs] = useActions([receiveJogs, setJogs], []);
 
     const jogs = useSelector((state) => state.jogStore.jogs);
+    const isLoading = useSelector((state) => state.jogStore.isLoading);
     const isFilterActive = useSelector(
         (state) => state.jogStore.isFilterActive
     );
@@ -31,7 +33,11 @@ const JogsPage = () => {
         isFilterActive ? onSetJogs(dateTo, dateFrom) : onReceiveJogs();
     }, [isFilterActive, dateFrom, dateTo]);
 
-    if (Array.isArray(jogs) && jogs.length === 0) return <EmptyJogsPage />;
+    if (isLoading) {
+        return <Loader />;
+    } else if (Array.isArray(jogs) && jogs.length === 0) {
+        return <EmptyJogsPage />;
+    }
     return (
         <>
             {isFilterActive && (

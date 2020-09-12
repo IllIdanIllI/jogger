@@ -4,3 +4,4 @@ export const RE_AUTHENTICATION = 'RE_AUTHENTICATION';
 export const RECEIVE_JOGS = 'RECEIVE_JOGS';
 export const ADD_JOG = 'ADD_JOG';
 export const TOGGLE_FILTER = 'TOGGLE_FILTER';
+export const TOGGLE_LOADER = 'TOGGLE_LOADER';

@@ -52,6 +52,7 @@ const Header = () => {
                         type="checkbox"
                         checked={checked}
                         id="switcher"
+                        readOnly
                     />
                     <label htmlFor="switcher" className="show-menu-btn">
                         <img
