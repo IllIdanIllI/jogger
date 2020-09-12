@@ -16,7 +16,7 @@ html {
     min-height: calc(100vh - $headerHeight);
 }
 
-@media (max-width: 858px){
+@media (max-width: $mediaWidth){
     .content-container {
         width: 100%;
         min-height: 100%;

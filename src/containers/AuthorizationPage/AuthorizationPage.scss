@@ -1,4 +1,5 @@
 @import '../../style/colors';
+@import '../../style/commonVars';
 
 div {
     position: relative;
@@ -34,7 +35,7 @@ div {
         }
     }
 
-    @media (max-width: 858px) {
+    @media (max-width: $mediaWidth) {
         div {
             height: 100%;
             .login-form-wrapper {

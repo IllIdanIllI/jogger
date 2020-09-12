@@ -1,4 +1,5 @@
 @import '../../style/colors';
+@import '../../style/commonVars';
 
 .jog-instance-container {
     display: grid;
@@ -37,7 +38,7 @@
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: $mediaWidth) {
     .jog-instance-container {
         position: relative;
         padding-bottom: 60px;

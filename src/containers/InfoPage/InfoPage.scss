@@ -1,4 +1,5 @@
 @import '../../style/colors';
+@import '../../style/commonVars';
 
 .info-container {
     position: relative;
@@ -26,7 +27,7 @@
     }
 }
 
-@media (max-width: 858px) {
+@media (max-width: $mediaWidth) {
     .info-container {
         position: relative;
         width: 90vw;
