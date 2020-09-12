@@ -13,7 +13,6 @@ describe('<JogPage /> unit test', () => {
         authentication: { isAuthenticated: true },
         jogStore: { isFilterActive: false, jogs: [] },
     };
-    // const mockStore = configureStore();
     let store, wrapper;
 
     beforeEach(async () => {
