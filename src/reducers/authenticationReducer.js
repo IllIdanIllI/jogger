@@ -1,8 +1,14 @@
-import { AUTHENTICATION, LOG_OUT, RE_AUTHENTICATION } from '../constants/types';
+import {
+    AUTHENTICATION,
+    LOG_OUT,
+    RE_AUTHENTICATION,
+    TOGGLE_LOADER,
+} from '../constants/types';
 import { TOKEN } from '../constants/constants';
 
 const initialState = {
     isAuthenticated: localStorage.getItem(TOKEN) ? true : false,
+    isLoading: true,
 };
 
 export default (state = initialState, action) => {
@@ -24,6 +30,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 isAuthenticated: false,
+            };
+        case TOGGLE_LOADER:
+            return {
+                ...state,
+                isLoading: payload,
             };
         default:
             return state;
