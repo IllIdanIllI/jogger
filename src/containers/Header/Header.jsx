@@ -50,7 +50,7 @@ const Header = () => {
                 <nav>
                     <input
                         type="checkbox"
-                        defaultChecked={checked}
+                        checked={checked}
                         id="switcher"
                     />
                     <label htmlFor="switcher" className="show-menu-btn">
