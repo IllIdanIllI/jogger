@@ -31,7 +31,6 @@ describe('<JogPage /> unit test', () => {
         }
     });
     it('should be appropriate link', () => {
-        console.log(wrapper.debug());
         const link = wrapper.find('Link');
         expect(link.prop('to')).toEqual('/jogs/add');
     });

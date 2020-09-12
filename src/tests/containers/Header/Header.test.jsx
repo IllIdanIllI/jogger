@@ -35,8 +35,6 @@ describe('<Header /> unit test', () => {
 
     it('Text equals', () => {
         const svg = wrapper.find('.header__items-filter-instance_inactive');
-        console.log(svg.at(1).debug());
-
         expect(svg.at(1).text()).toEqual('filter.svg');
     });
     it('Match snap', () => {
