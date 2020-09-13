@@ -53,4 +53,19 @@
     .jogs-container {
         width: 100%;
     }
+
+    .filter {
+        height: 60px;
+        background-color: $white;
+        &-container {
+            grid-column-gap: 15px;
+            &__date {
+                grid-column-gap: 5px;
+                input {
+                    width: 90px;
+                    height: 25px;
+                }
+            }
+        }
+    }
 }

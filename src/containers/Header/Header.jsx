@@ -48,11 +48,7 @@ const Header = () => {
 
             {isAuthenticated && (
                 <nav>
-                    <input
-                        type="checkbox"
-                        checked={checked}
-                        id="switcher"
-                    />
+                    <input type="checkbox" checked={checked} id="switcher" />
                     <label htmlFor="switcher" className="show-menu-btn">
                         <img
                             src={menu}
@@ -60,7 +56,14 @@ const Header = () => {
                             onClick={() => setChecked(true)}
                         />
                     </label>
-                    <div className={`header__items-filter`}>
+                    <div
+                        style={
+                            location.pathname === JOGS_URL
+                                ? { visibility: 'visible' }
+                                : {}
+                        }
+                        className={`header__items-filter`}
+                    >
                         <Filter
                             onClick={() =>
                                 location.pathname === JOGS_URL &&

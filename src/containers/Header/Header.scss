@@ -60,7 +60,7 @@ header {
             &-filter {
                 position: relative;
                 top: 37px;
-                margin-right: 20px;
+                margin-right: 2vw;
                 float: right;
                 cursor: pointer;
                 &-instance {
@@ -126,6 +126,7 @@ header {
                 }
 
                 &-filter {
+                    visibility: hidden;
                     right: 5vw;
                 }
             }
