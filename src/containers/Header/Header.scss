@@ -113,6 +113,9 @@ header {
                 transition: 0.7s;
 
                 &-instance {
+                    &:first-child {
+                        margin-top: 10vh;
+                    }
                     color: $dark-grey;
                     font-size: 20pt;
                     display: block;
